@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Code Editor</title> 
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9d33748675.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left">
+
+            <label><i class="fa-brands fa-html5"></i> HTML</label>
+            <textarea id="html-code" onKeyup="run()" placeholder="Add your HTML here."></textarea>
+
+
+            <label><i class="fa-brands fa-css3-alt"></i> CSS</label>
+            <textarea id="css-code" onKeyup="run()" placeholder="Add your CSS here."></textarea>
+    
+
+            <label><i class="fa-brands fa-square-js"></i> Javascript</label>
+            <textarea id="js-code" onKeyup="run()" placeholder="Add your Javascript here."></textarea>
+        </div>
+
+
+        <div class="right">
+            <label><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+
+    </div> 
+    
+    <script>
+
+        function run() {
+            let htmlCode = document.getElementById("html-code").value;
+            let cssCode = document.getElementById("css-code").value;
+            let jsCode = document.getElementById("js-code").value;
+            let output = document.getElementById("output");
+
+            output.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "</style>";
+            output.contentWindow.eval(jsCode);
+
+        }
+
+    </script>
+    
+
+</body>
+</html>
